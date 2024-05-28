@@ -163,7 +163,7 @@ include "connection.php";
                 ?>
 
                     <div class="row">
-                        <div class="col" style="padding-left:2;">5 items</div>
+                        <div class="col" style="padding-left:2;"><?php echo ($cart_num); ?> items</div>
                         <div class="col text-right">Rs. <?php echo ($total); ?>.00</div>
                     </div>
                     <form method="POST" action="" class="form1">
