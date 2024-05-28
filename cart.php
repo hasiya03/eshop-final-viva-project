@@ -62,16 +62,16 @@ include "connection.php";
                 </div>
                 <?php
                             if ($cart_num == 0) {
-                ?>                      
-                                      
-                                      <span class="h1 text-black-50 fw-bold offset-lg-4  offset-sm-4">
-    <i class="bi bi-cart-plus" style="font-size: 200px;"></i>
-</span>
-                                        
-<div class="text-right offset-lg-2" style="font-size: 50px; font-family: Comic Sans MS, Comic Sans, cursive; font-weight: bold; font-style: italic;">Add items to your cart...</div>
+                ?>
 
-                            
-                
+                    <span class="h1 text-black-50 fw-bold offset-lg-4  offset-sm-4">
+                        <i class="bi bi-cart-plus" style="font-size: 200px;"></i>
+                    </span>
+
+                    <div class="text-right offset-lg-2" style="font-size: 50px; font-family: Comic Sans MS, Comic Sans, cursive; font-weight: bold; font-style: italic;">Add items to your cart...</div>
+
+
+
                 <?php
                             }
 
@@ -94,20 +94,21 @@ include "connection.php";
 
                             </div>
                             <div class="col">
-                            <a href="#" class="btn btn-danger"onclick='removefromcart(<?php echo $cart_data["Product_ID"] ?>);'><i class="bi bi-dash"></i></a>
+                                <a href="#" class="btn btn-danger" onclick='removefromcart(<?php echo $cart_data["Product_ID"] ?>);'><i class="bi bi-dash"></i></a>
 
                                 <?php echo $cart_data["qty"]; ?>
-                                <a href="#" class="btn btn-primary"onclick='addtocart(<?php echo $cart_data["Product_ID"] ?>);'><i class="bi bi-plus"></i></a>
+                                <a href="#" class="btn btn-primary" onclick='addtocart(<?php echo $cart_data["Product_ID"] ?>);'><i class="bi bi-plus"></i></a>
                             </div>
                             <div class="col">Rs. <?php echo $cart_data["price"]; ?></div>
-                            
-                            
+
+
                         </div>
                     </div>
                 <?php
                                 $total = $total + ($cart_data["price"] * $cart_data["qty"]);
                             }
                         } else {
+
                 ?>
 
                 <td colspan="5" class="text-center text-white-50 fw-bold"><a href="signup.php">Sign In<a></a> to Your Account First</td>
@@ -124,31 +125,76 @@ include "connection.php";
                     <h5><b>Summary</b></h5>
                 </div>
                 <hr>
-                <div class="row">
-                    <div class="col" style="padding-left:2;"><?php echo ($cart_num); ?> items</div>
-                    <div class="col text-right">Rs. <?php echo ($total); ?>.00</div>
-                </div>
-                <form method="POST" action="" class="form1">
-                    <p>SHIPPING</p>
-                    <select class="selectdelivery" name="shipping_option" onchange="this.form.submit();">
-                        <?php if (isset($cart_data)) { ?>
-                            <option value="<?php echo $cart_data["Shipping_colombo"]; ?>" <?php if ($selected_shipping == $cart_data["Shipping_colombo"]) echo 'selected'; ?>>
-                                Colombo: Rs. <?php echo $cart_data["Shipping_colombo"]; ?>
-                            </option>
-                            <option value="<?php echo $cart_data["Shipping_outside_colombo"]; ?>" <?php if ($selected_shipping == $cart_data["Shipping_outside_colombo"]) echo 'selected'; ?>>
-                                Outside Colombo: Rs. <?php echo $cart_data["Shipping_outside_colombo"]; ?>
-                            </option>
-                        <?php } ?>
-                    </select>
-                    <p>GIVE CODE</p>
-                    <input class="input1" id="code" placeholder="Enter your code">
-                </form>
-                <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
-                    <div class="col">TOTAL PRICE</div>
+                <?php
+                if (isset($_SESSION["u"])) {
+                ?>
+                    <div class="row">
+                        <div class="col" style="padding-left:2;"><?php echo ($cart_num); ?> items</div>
+                        <div class="col text-right">Rs. <?php echo ($total); ?>.00</div>
+                    </div>
+                    <form method="POST" action="" class="form1">
+                        <p>SHIPPING</p>
+                        <select class="selectdelivery" name="shipping_option" onchange="this.form.submit();">
+                            <?php if (isset($cart_data)) { ?>
+                                <option value="<?php echo $cart_data["Shipping_colombo"]; ?>" <?php if ($selected_shipping == $cart_data["Shipping_colombo"]) echo 'selected'; ?>>
+                                    Colombo: Rs. <?php echo $cart_data["Shipping_colombo"]; ?>
+                                </option>
+                                <option value="<?php echo $cart_data["Shipping_outside_colombo"]; ?>" <?php if ($selected_shipping == $cart_data["Shipping_outside_colombo"]) echo 'selected'; ?>>
+                                    Outside Colombo: Rs. <?php echo $cart_data["Shipping_outside_colombo"]; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <p>GIVE CODE</p>
+                        <input class="input1" id="code" placeholder="Enter your code">
+                    </form>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">TOTAL PRICE</div>
 
-                    <div class="col text-right">Rs.<?php echo ($total + $selected_shipping); ?>.00</div>
-                </div>
-                <button class="btn btn-secondary col-12 mt-3">CHECKOUT</button>
+                        <div class="col text-right">Rs.<?php echo ($total + $selected_shipping); ?>.00</div>
+                    </div>
+                    <button class="btn btn-secondary col-12 mt-3">CHECKOUT</button>
+
+
+
+                <?php
+                } else {
+                    $cart_num=0;
+                    $total=0;
+                ?>
+
+                    <div class="row">
+                        <div class="col" style="padding-left:2;">5 items</div>
+                        <div class="col text-right">Rs. <?php echo ($total); ?>.00</div>
+                    </div>
+                    <form method="POST" action="" class="form1">
+                        <p>SHIPPING</p>
+                        <select class="selectdelivery" name="shipping_option" onchange="this.form.submit();">
+                            <?php if (isset($cart_data)) { ?>
+                                <option value="<?php echo $cart_data["Shipping_colombo"]; ?>" <?php if ($selected_shipping == $cart_data["Shipping_colombo"]) echo 'selected'; ?>>
+                                    Colombo: Rs. <?php echo $cart_data["Shipping_colombo"]; ?>
+                                </option>
+                                <option value="<?php echo $cart_data["Shipping_outside_colombo"]; ?>" <?php if ($selected_shipping == $cart_data["Shipping_outside_colombo"]) echo 'selected'; ?>>
+                                    Outside Colombo: Rs. <?php echo $cart_data["Shipping_outside_colombo"]; ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                        <p>GIVE CODE</p>
+                        <input class="input1" id="code" placeholder="Enter your code">
+                    </form>
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">TOTAL PRICE</div>
+
+                        <div class="col text-right">Rs.<?php echo ($total + $selected_shipping); ?>.00</div>
+                    </div>
+                    <button class="btn btn-secondary col-12 mt-3">CHECKOUT</button>
+
+
+
+                <?php
+                }
+                ?>
+
+
             </div>
         </div>
 
@@ -216,7 +262,7 @@ include "connection.php";
 
                                     if ($watchlist_data["QTY"] > 0) {
                                     ?>
-                                 <button class="col btn btn-primary m-1" onclick='addtocart(<?php echo $watchlist_data["Product_ID"] ?>);'><i class="bi bi-bag-plus"></i></button>
+                                        <button class="col btn btn-primary m-1" onclick='addtocart(<?php echo $watchlist_data["Product_ID"] ?>);'><i class="bi bi-bag-plus"></i></button>
 
                                     <?php
 
