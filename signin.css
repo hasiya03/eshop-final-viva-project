@@ -1,0 +1,37 @@
+body {
+    background:linear-gradient(to right,rgb(105, 105, 105),rgb(226, 226, 226));
+    
+    font-family: Arial, sans-serif;
+}
+
+.signincard {
+    
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.card-face {
+    
+    position: absolute;
+  
+   
+    
+    backface-visibility: hidden;
+    
+    
+ 
+    
+}
+
+
+
+.card-back {
+   
+  
+    transform: rotateY(180deg);
+}
+
+.signincard.flipped {
+    transform: rotateY(180deg);
+}
