@@ -54,7 +54,7 @@
 
                                 ?>
 
-                                    <option value="<?php echo $d["Gender id"]; ?>"><?php echo $d["Name"]; ?></option>
+                                    <option value="<?php echo $d["Gender_id"]; ?>"><?php echo $d["gender_name"]; ?></option>
 
                                 <?php
 

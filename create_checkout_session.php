@@ -29,7 +29,7 @@ try {
                 'currency' => 'lkr',
                 'product_data' => [
                     'name' => $cart_data['Name'],
-                    'images' => [$cart_data['Product_Image_Path']],
+                    
                 ],
                 'unit_amount' => $cart_data['price'] * 100,
             ],

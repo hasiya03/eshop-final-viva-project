@@ -30,7 +30,7 @@ if (empty($name)) {
 } else {
 
     $rs = Database::search("SELECT * FROM `customer_details` WHERE `Email`='" . $email . "' OR 
-    `Mobile No`='" . $mobile . "'");
+    `Mobile_No`='" . $mobile . "'");
     $n = $rs->num_rows;
 
     if ($n > 0) {
@@ -43,7 +43,7 @@ if (empty($name)) {
         $date = $d->format("Y-m-d H:i:s");
 
         Database::iud("INSERT INTO 
-        `customer_details`(`Name`,`Email`,`Password`,`Mobile No`,`Registerd Date`,`Gender_Gender id`) 
+        `customer_details`(`Name`,`Email`,`Password`,`Mobile_No`,`Registerd_Date`,`Gender_Gender_id`) 
         VALUES ('" . $name . "','" . $email . "','" . $password . "','" . $mobile . "',
         '" . $date . "','" . $gender . "')");
 
