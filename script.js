@@ -612,3 +612,4 @@ function removefromcart(id){
 
 
 }
+

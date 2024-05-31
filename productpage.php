@@ -201,6 +201,7 @@ if (isset($_GET["id"])) {
 
                         </div>
                     </div>
+                    <button class="btn btn-secondary col-12 mt-3" type="submit" id="payhere-payment" onclick="paynow(<?php echo $pid; ?>);">Buy now</button>
 
                 </div>
 
@@ -349,6 +350,7 @@ if (isset($_GET["id"])) {
 
             <?php include "footer.php"; ?>
             <script src="script.js"></script>
+          
 
 
         </body>
