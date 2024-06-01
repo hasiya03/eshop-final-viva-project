@@ -3,22 +3,42 @@
 require "connection.php";
 
 
-    if (isset($_GET["email"])) {
+    if (isset($_GET["email"])) { 
 
        
         $email = $_GET["email"];
 
 
 
-        $customer_rs = Database::search("SELECT * FROM `customer_details` WHERE `Customer_details_Email`='" . $email . "' ");
-        $customer_num = $customer_rs->num_rows;
+          // Delete watchlist items
+  Database::iud("DELETE watchlist FROM watchlist
+  JOIN product_details ON watchlist.product_id = product_details.Product_ID
+  WHERE product_details.Customer_details_Email = '" . $email . "';");
+  
+        Database::iud("DELETE product_pics FROM product_pics
+        JOIN product_details ON product_pics.Product_ID = product_details.Product_ID
+        WHERE product_details.Customer_details_Email = '" . $email . "';");
 
-        if ($customer_num == 1) {
-           
-             Database::iud("DELETE FROM `customer_details` WHERE `customer_details`='" . $email . "'");
-                echo ("Customer succesfully removed from the Database");
-           
-        } else {
-            echo ("Product not found in cart");
-        }
+// Delete cart items
+Database::iud("DELETE cart FROM cart
+        JOIN product_details ON cart.product_id = product_details.Product_ID
+        WHERE product_details.Customer_details_Email = '" . $email . "';");
+        
+
+
+
+// Delete product details
+Database::iud("DELETE FROM product_details WHERE Customer_details_Email = '" . $email . "';");
+
+// Delete customer addresses
+Database::iud("DELETE FROM customer_address WHERE Customer_details_Email = '" . $email . "';");
+
+// Delete profile pictures
+Database::iud("DELETE FROM profile_pics WHERE Customer_details_Email = '" . $email . "';");
+
+// Delete customer details
+Database::iud("DELETE FROM customer_details WHERE Email = '" . $email . "';");
+
+
+echo "Customer successfully removed from the database.";
     }

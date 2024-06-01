@@ -198,7 +198,8 @@ LIMIT " . $results_per_page . " OFFSET " . $page_results . " ");
                                             <div class="row m-1 ">
                                                 <button class="col btn btn-primary m-1" onclick="sendId(<?php echo $selected_data['Product_ID']; ?>);">Edit</button>
 
-                                                <button class="col btn btn-danger m-1 "><i class="bi bi-x-square-fill"></i></button>
+                                                <button class="col btn btn-danger m-1 " onclick='removeproduct("<?php echo $selected_data["Product_ID"]; ?>");' 
+        id="<?php echo $selected_data['Product_ID']; ?>"> <i class="bi bi-x-square-fill"></i></button>
                                             </div>
                                         </td>
                                     </tr>

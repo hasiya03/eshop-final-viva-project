@@ -72,8 +72,11 @@ include "connection.php";
                             <td>
                                 <div class="row m-1 ">
 
-                                    <button class="col btn btn-danger m-1  " onclick='removecustomer(<?php echo $customer_data["Email"] ?>);' id="<?php echo $customer_data["Email"]  ?>"><i class="bi bi-x-square-fill"></i></button>
-                                </div>
+                                <button class="col btn btn-danger m-1" 
+        onclick='removecustomer("<?php echo $customer_data["Email"]; ?>");' 
+        id="<?php echo $customer_data["Email"]; ?>">
+    <i class="bi bi-x-square-fill"></i>
+</button>   </div>
                             </td>
                         </tr>
                     <?php

@@ -1,7 +1,7 @@
 body{
     background: linear-gradient(to right, #868f96 0%, #596164 100%);
    overflow-x: hidden;
-    
+   user-select: none;
 
 }
 .cartimg{

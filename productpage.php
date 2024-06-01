@@ -201,7 +201,7 @@ if (isset($_GET["id"])) {
 
                         </div>
                     </div>
-                    <button class="btn btn-secondary col-12 mt-3" type="submit" id="payhere-payment" onclick="paynow(<?php echo $pid; ?>);">Buy now</button>
+                    <button class="btn btn-danger col-12 mt-3" type="submit"  onclick='addtocart(<?php echo $product_data["Product_ID"] ?>);'>Buy now</button>
 
                 </div>
 

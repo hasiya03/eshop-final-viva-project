@@ -1,19 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        New Tech||Sales
-    </title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifetime Sales</title>
+    
 </head>
-
 <body>
-<?php include "adminheader.php"; ?>
+    <?php include "adminheader.php"; ?>
 <div class="container mt-4">
 <h2 class="text-center">Sales Summary</h2>
         
@@ -22,7 +16,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Total Sales</h5>
-                        <p class="card-text">$1,000,000</p>
+                        <p class="card-text">$<span id="total-sales"></span></p>
                     </div>
                 </div>
             </div>
@@ -30,7 +24,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Number of Orders</h5>
-                        <p class="card-text">5000</p>
+                        <p class="card-text"><span id="total-orders"></span></p>
                     </div>
                 </div>
             </div>
@@ -42,15 +36,17 @@
         <h2 class="text-center">Sales Chart</h2>
         <div class="card">
             <div class="card-body">
-                <!-- Placeholder for a sales chart (you can integrate your preferred chart library here) -->
-                <p>This is where your sales chart will be displayed.</p>
+                <canvas id="sales-chart" width="400" height="200"></canvas>
             </div>
         </div>
     </div>
+    <div id="error-message" style="color: red;"></div>
+    
 
 
-
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-moment"></script>
+    <script src="sales.js"></script>
 </body>
-
 </html>

@@ -614,25 +614,52 @@ function removefromcart(id){
 }
 
 function removecustomer(email){
-  alert(email);
-  // var r = new XMLHttpRequest();
+ 
+  var r = new XMLHttpRequest();
 
-  // r.onreadystatechange = function () {
-  //     if (r.status == 200 && r.readyState == 4) {
-  //         var t = r.responseText;
-  //         if (t == "Customer succesfully removed from the Database") {
-  //             alert("Customer succesfully removed from the Database");
-  //             window.location.reload();
+  r.onreadystatechange = function () {
+      if (r.status == 200 && r.readyState == 4) {
+          var t = r.responseText;
+          if (t == "Customer succesfully removed from the Database") {
+              alert("Customer succesfully removed from the Database");
+              window.location.reload();
                      
-  //         } else {
-  //             alert(t); 
+          } else {
+              alert(t); 
+              window.location.reload();
 
-  //         }
-  //     }
-  // }
+          }
+      } 
+  }
 
-  // r.open("GET", "removecustomerprocess.php?email=" + email, true);
-  // r.send();
+  r.open("GET", "removecustomerprocess.php?email=" + email, true);
+  r.send();
+
+
+
+}
+function removeproduct(id){
+  
+ 
+  var r = new XMLHttpRequest();
+
+  r.onreadystatechange = function () {
+      if (r.status == 200 && r.readyState == 4) {
+          var t = r.responseText;
+          if (t == "product succesfully removed from the Database") {
+              alert("product succesfully removed from the Database");
+              window.location.reload();
+                     
+          } else {
+              alert(t); 
+              window.location.reload();
+
+          }
+      } 
+  }
+
+  r.open("GET", "removeproductprocess.php?id=" + id, true);
+  r.send();
 
 
 
