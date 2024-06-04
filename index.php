@@ -23,7 +23,7 @@ include "connection.php";
         <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="pics/corousal/Evil Imp Dolch Keycap Set Mechanical Keyboard (152) MX Switch Cherry Profile Double Shot with Keycap Puller.jpg" class="d-block w-100" alt="...">
+                    <img src="pics/corousal/dd_environment_trade_in__ffgz1k6741e2_large_2x.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption  d-md-block">
                         <h5>First slide label</h5>
                         <p>Some representative placeholder content for the first slide.</p>
@@ -37,7 +37,7 @@ include "connection.php";
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="pics/corousal/The best tech of CES 2015_ Our picks.jpg" class="d-block w-100" alt="...">
+                    <img src="pics/corousal/SDSAC-7339-S24U-Exclusive-Colors-HP-KV-DT-1440x640.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption  d-md-block">
                         <h5>First slide label</h5>
                         <p>Some representative placeholder content for the first slide.</p>
@@ -154,7 +154,12 @@ include "connection.php";
                                         <a href="#" class="btn btn-primary" onclick="showAlert()" >ADD TO WISHLIST</a>
                                         <script>
                                             function showAlert() {
-                                                alert("Please SignIn !");
+                                                Swal.fire({
+                title: 'Alert',
+                text: 'Please Sign in first!',
+                icon: 'info',
+                confirmButtonText: 'OK'
+            });
                                             }
                                         </script>
 
@@ -167,7 +172,7 @@ include "connection.php";
 
 
 
-                                <?php
+                                <?php 
 
                                 } else {
                                 ?>
@@ -197,7 +202,13 @@ include "connection.php";
                                         <a href="#" class="btn btn-primary" onclick="showAlert()" ?>ADD TO WISHLIST</a>
                                         <script>
                                             function showAlert() {
-                                                alert("Please SignIn !");
+                                               
+              Swal.fire({
+                title: 'Alert',
+                text: 'Please Sign in first!',
+                icon: 'info',
+                confirmButtonText: 'OK'
+            });
                                             }
                                         </script>
 
@@ -362,6 +373,8 @@ include "connection.php";
 
 
     <?php include "footer.php"; ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script src="script.js"></script>
 
 

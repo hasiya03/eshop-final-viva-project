@@ -40,18 +40,14 @@ if (isset($_SESSION["u"])) {
                     <div class="row">
                         <?php
                         $img = array();
-                        $img[0] = "pics/icons8-add-product-96(-xxhdpi).png";
-                        $img[1] = "pics/icons8-add-product-96(-xxhdpi).png";
-                        $img[2] = "pics/icons8-add-product-96(-xxhdpi).png";
-                        $img_rs = Database::search("SELECT * FROM `product_pics` WHERE `Product_pics_id`='" . $product["Product_ID"] . "'");
+                      
+                        $img_rs = Database::search("SELECT * FROM `product_pics` WHERE `Product_ID`='" . $product["Product_ID"] . "'");
                         $img_num = $img_rs->num_rows;
                         for ($x = 0; $x < $img_num; $x++) {
                             $img_data = $img_rs->fetch_assoc();
                             $img[$x] = $img_data["Product_Image_Path"];
-                        }
+                            }
                         ?>
-
-
                         <div class="offset-lg-3 col-12 col-lg-6">
                             <div class="row">
                                 <div class="col-4 border border-black rounded-start">
@@ -66,11 +62,14 @@ if (isset($_SESSION["u"])) {
                             </div>
                         </div>
 
+
+                        
+
                     </div>
                 </div>
                 <div class="offset-lg-3 col-12 col-lg-6 d-grid mt-3">
                     <input type="file" class="d-none" id="imageuploader" multiple />
-                    <label for="imageuploader" class="col-12 btn btn-primary" onclick="changeProductImage();">Upload Images</label>
+                    <label for="imageuploader" class="col-12 btn btn-primary" onclick="changeProductImage();">Update Product Images</label>
                 </div>
 
                 <div class="container col-lg-7 mx-auto">
@@ -219,6 +218,7 @@ if (isset($_SESSION["u"])) {
 
 
 
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
             <script src="script.js"></script>
         </body>

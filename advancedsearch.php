@@ -156,17 +156,7 @@ require "connection.php";
             </div>
 
             <div class="  col-12 col-lg-9 bg-body rounded mb-3 mt-4">
-                <div class="row">
-                    <div class="offset-8 col-4 mt-2 mb-2">
-                        <select class="form-select border border-top-0 border-start-0 border-end-0 border-2 border-dark" id="s">
-                            <option value="0">SORT BY</option>
-                            <option value="1">PRICE LOW TO HIGH</option>
-                            <option value="2">PRICE HIGH TO LOW</option>
-                            <option value="3">QUANTITY LOW TO HIGH</option>
-                            <option value="4">QUANTITY HIGH TO LOW</option>
-                        </select>
-                    </div>
-                </div>
+                
 
                 <div class="row">
                     <div class="offset-lg-1 col-12 col-lg-10 text-center">
@@ -176,7 +166,7 @@ require "connection.php";
                                 <span class="fw-bold text-black-50"><i class="bi bi-search h1" style="font-size: 100px;"></i></span>
                             </div>
                             <div class="offset-3 col-6 mt-3 mb-5">
-                                <span class="h1 text-black-50 fw-bold">No Items Searched Yet...</span>
+                                <span class="h1 text-black-50 fw-bold">Search for the any Item you want </span>
                             </div>
                         </div>
                     </div>

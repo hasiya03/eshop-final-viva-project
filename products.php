@@ -30,128 +30,16 @@ if (isset($_SESSION["u"])) {
         <div class="col-12">
             <div class="row">
                 <!-- filter -->
-                <div class="col-11 col-lg-2 mx-3 my-3 border border-black rounded">
-                    <div class="row">
-                        <div class="col-12 mt-3 fs-5">
-                            <div class="row">
-
-                                <div class="col-12">
-                                    <label class="form-label fw-bold fs-3">Sort Products</label>
-                                </div>
-                                <div class="col-12">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <input type="text" placeholder="Search..." class="form-control" id="s" />
-                                        </div>
-                                       
-                                    </div>
-                                </div>
-
-                                <div class="col-12 mt-2">
-                                    <label class="form-label fw-bold">Listed Date</label>
-                                </div>
-                                <div class="col-12">
-                                    <hr style="width: 80%;" />
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="r1" id="n">
-                                        <label class="form-check-label" for="n">
-                                            Newest to oldest
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="r1" id="o">
-                                        <label class="form-check-label" for="o">
-                                            Oldest to newest
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 mt-3">
-                                    <label class="form-label fw-bold">By quantity</label>
-                                </div>
-                                <div class="col-12">
-                                    <hr style="width: 80%;" />
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="r2" id="h">
-                                        <label class="form-check-label" for="h">
-                                            High to low
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="r2" id="l">
-                                        <label class="form-check-label" for="l">
-                                            Low to high
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 mt-3">
-                                    <label class="form-label fw-bold">By condition</label>
-                                </div>
-                                <div class="col-12">
-                                    <hr style="width: 80%;" />
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="r3" id="b">
-                                        <label class="form-check-label" for="b">
-                                            Brandnew
-                                        </label>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="r3" id="ob">
-                                        <label class="form-check-label" for="ob">
-                                            Open-Box
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="r3" id="u">
-                                        <label class="form-check-label" for="u">
-                                            Used
-                                        </label>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 text-center mt-3 mb-3">
-                                    <div class="row g-2">
-                                        <div class="col-12 col-lg-6 d-grid">
-                                            <button class="btn btn-success fw-bold" onclick="sort(0);">Sort</button>
-                                        </div>
-                                        <div class="col-12 col-lg-6 d-grid">
-                                            <button class="btn btn-primary fw-bold" onclick="clearSort();">Clear</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
                 
-                <div class="col-12 col-lg-9 mt-2 mb-3 rounded " >
+    
 
-                <div  id="sort">
-
-
+                <div  class="container">
 
 
-                    <div class="table-responsive rounded-top ">
+
+
+                    <div class="table-responsive rounded-top container">
 
                         <table class="table table-hover table-dark table-striped mt-2 p-2">
 
@@ -263,11 +151,12 @@ LIMIT " . $results_per_page . " OFFSET " . $page_results . " ");
                                 </div>
 
                 </div>
-                </div>
+                
             </div>
         </div>
 
 
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script src="script.js"></script>
     </body>

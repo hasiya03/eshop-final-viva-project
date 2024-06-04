@@ -8,7 +8,11 @@
         New Tech||Product Adding
     </title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="swiper.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
 </head>
 
@@ -25,42 +29,30 @@
 
         include "connection.php";
 
-
     ?>
 
 
         <h3 class="text-center p-3">Add Product</h3>
 
-        <div class=" row">
-            <div class="col-12">
-                <div class="row">
-                    
-                    <div class="offset-lg-3 col-12 col-lg-6">
-                        <div class="row">
-                            <div class="col-4 border border-black rounded-start">
-                                <img src="pics/icons8-add-product-96(-xxhdpi).png" class="img-fluid" style="width: 250px;" id="prodpic0" />
-                            </div>
-                            <div class="col-4 border border-black ">
-                                <img src="pics/icons8-add-product-96(-xxhdpi).png" class="img-fluid" style="width: 250px;" id="prodpic1" />
-                            </div>
-                            <div class="col-4 border border-black rounded-end">
-                                <img src="pics/icons8-add-product-96(-xxhdpi).png" class="img-fluid" style="width: 250px;" id="prodpic2" />
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="">
+                    <div class="offset-lg-1 col-12 col-lg-6">
+                        <div class="">
+                            <div class="col border border-black rounded">
+                                <img src="pics/icons8-add-product-96(-xxhdpi).png" class="offset-sm-2" style="width: 150px;" id="prodpic0" />
                             </div>
                         </div>
                     </div>
-                    
+                </div>
+                <div class="offset-lg-1 col-12 col-lg-6 d-grid mt-3">
+                    <input type="file" class="d-none" id="imageuploader" multiple />
+                    <label for="imageuploader" class="col-12 btn btn-primary" onclick="changeProductImage();">Upload Images</label>
                 </div>
             </div>
-            <div class="offset-lg-3 col-12 col-lg-6 d-grid mt-3">
-                <input type="file" class="d-none" id="imageuploader" multiple />
-                <label for="imageuploader" class="col-12 btn btn-primary" onclick="changeProductImage();">Upload Images</label>
-            </div>
 
-            <div class="container col-lg-7 mx-auto">
-
+            <div class="container col-lg-6 ">
                 <form class="row g-3 p-2">
-
-
                     <div class="col-md-12">
                         <label for="productname" class="form-label">Product Name</label>
                         <input class="form-control" id="productname">
@@ -70,22 +62,14 @@
                         <select id="Category" class="form-select" onclick="loadBrands();">
                             <option value="0">Select category</option>
                             <?php
-
-
-
                             $category_rs = Database::search("SELECT * FROM `catergory`");
                             $category_num = $category_rs->num_rows;
-
                             for ($x = 0; $x < $category_num; $x++) {
                                 $category_data = $category_rs->fetch_assoc();
-
                             ?>
-
                                 <option value="<?php echo $category_data["Catergory_id"]; ?>"><?php echo $category_data["Name"]; ?></option>
-
                             <?php
                             }
-
                             ?>
                         </select>
                     </div>
@@ -95,22 +79,14 @@
                         <select id="brand" class="form-select">
                             <option value="0">Select Brand</option>
                             <?php
-
-
-
                             $brand_rs = Database::search("SELECT * FROM `brand`");
                             $brand_num = $brand_rs->num_rows;
-
                             for ($x = 0; $x < $brand_num; $x++) {
                                 $brand_data = $brand_rs->fetch_assoc();
-
                             ?>
-
                                 <option value="<?php echo $brand_data["Brand_id"]; ?>"><?php echo $brand_data["Brand_Name"]; ?></option>
-
                             <?php
                             }
-
                             ?>
                         </select>
                     </div>
@@ -119,22 +95,14 @@
                         <select id="model" class="form-select">
                             <option value="0">Select Model</option>
                             <?php
-
-
-
                             $model_rs = Database::search("SELECT * FROM `models`");
                             $model_num = $model_rs->num_rows;
-
                             for ($x = 0; $x < $model_num; $x++) {
                                 $model_data = $model_rs->fetch_assoc();
-
                             ?>
-
                                 <option value="<?php echo $model_data["Models_id"]; ?>"><?php echo $model_data["Model_Name"]; ?></option>
-
                             <?php
                             }
-
                             ?>
                         </select>
                     </div>
@@ -144,22 +112,14 @@
                         <select id="Color" class="form-select">
                             <option value="0">Select color</option>
                             <?php
-
-
-
                             $color_rs = Database::search("SELECT * FROM `color`");
                             $color_num = $color_rs->num_rows;
-
                             for ($x = 0; $x < $color_num; $x++) {
                                 $color_data = $color_rs->fetch_assoc();
-
                             ?>
-
                                 <option value="<?php echo $color_data["Color_id"]; ?>"><?php echo $color_data["Color_Name"]; ?></option>
-
                             <?php
                             }
-
                             ?>
                         </select>
                     </div>
@@ -168,31 +128,20 @@
                         <select id="Storage" class="form-select">
                             <option value="0">Select Storage</option>
                             <?php
-
-
-
                             $storage_rs = Database::search("SELECT * FROM `storage`");
                             $storage_num = $storage_rs->num_rows;
-
                             for ($x = 0; $x < $storage_num; $x++) {
                                 $storage_data = $storage_rs->fetch_assoc();
-
                             ?>
-
                                 <option value="<?php echo $storage_data["Storage_id"]; ?>"><?php echo $storage_data["Amount"]; ?></option>
-
                             <?php
                             }
-
                             ?>
                         </select>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label ">Quantity</label>
-
-
                         <input type="number" class="form-control" id="Qty" />
-
                     </div>
 
                     <div class="col-md-6">
@@ -200,22 +149,14 @@
                         <select id="inputCondition" class="form-select">
                             <option value="0">Select Condition</option>
                             <?php
-
-
-
                             $condition_rs = Database::search("SELECT * FROM `condition`");
                             $condition_num = $condition_rs->num_rows;
-
                             for ($x = 0; $x < $condition_num; $x++) {
                                 $condition_data = $condition_rs->fetch_assoc();
-
                             ?>
-
                                 <option value="<?php echo $condition_data["Condition_id"]; ?>"><?php echo $condition_data["Condition_type"]; ?></option>
-
                             <?php
                             }
-
                             ?>
                         </select>
                     </div>
@@ -227,11 +168,8 @@
                         </div>
                     </div>
 
-
-
                     <div class="col-md-6">
                         <label class="form-label ">Delivery in colombo</label>
-
                         <div class="input-group mb-2 ">
                             <span class="input-group-text">Rs.</span>
                             <input type="text" class="form-control" id="decolo" />
@@ -239,10 +177,8 @@
                         </div>
                     </div>
 
-
                     <div class="col-md-6">
                         <label class="form-label ">Delivery out of colombo</label>
-
                         <div class="input-group mb-2 ">
                             <span class="input-group-text">Rs.</span>
                             <input type="text" class="form-control" id="deoutcolo" />
@@ -252,7 +188,6 @@
 
                     <div class="col-md-12">
                         <label class="form-label ">Price</label>
-
                         <div class="input-group mb-2 ">
                             <span class="input-group-text">Rs.</span>
                             <input type="text" class="form-control" id="price" />
@@ -264,27 +199,31 @@
                         <button type="submit" class="btn  btn-primary" onclick="listproduct();">List Product</button>
                     </div>
                 </form>
-
-
             </div>
 
+            <div class="col-lg-3">
+                <h5 class="offset-1">Recently Added products</h5>
+                <div class="swiper mySwiperVertical">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">Slide 1</div>
+                        <div class="swiper-slide">Slide 2</div>
+                        <div class="swiper-slide">Slide 3</div>
+                   
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
         </div>
     <?php
     } else {
-
-
-
         header("Location:index.php");
     }
-
     ?>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
-
-
-
-
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="swiper.js"></script>
     <script src="script.js"></script>
 </body>
 

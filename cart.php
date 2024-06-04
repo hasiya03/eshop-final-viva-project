@@ -211,6 +211,10 @@ include "connection.php";
     <!--offcanvas-->
 
     <script src="https://js.stripe.com/v3/"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
     <script src="checkout.js" defer></script>
     <script src="script.js"></script>
           

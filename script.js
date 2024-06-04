@@ -23,12 +23,19 @@ function signUp() {
       var t = r.responseText;
 
       if (t == "success") {
-        document.getElementById("msg").innerHTML = t;
-        document.getElementById("msg").className = "alert alert-success";
-        document.getElementById("msgdiv").className = "d-block";
+        Swal.fire({
+          title: 'Alert',
+          text: t,
+          icon: 'success',
+          confirmButtonText: 'OK'
+      });
       } else {
-        document.getElementById("msg").innerHTML = t;
-        document.getElementById("msgdiv").className = "d-block";
+        Swal.fire({
+          title: 'Alert',
+          text: t,
+          icon: 'info',
+          confirmButtonText: 'OK'
+      });
       }
     }
   };
@@ -55,7 +62,12 @@ function signin() {
       if (t == "success") {
         window.location = "index.php";
       } else {
-        alert(t);
+        Swal.fire({
+          title: 'Alert',
+          text: t,
+          icon: 'error',
+          confirmButtonText: 'OK'
+      });
       }
     }
   };
@@ -161,8 +173,17 @@ function signout(){
             
             if (t == "success") {
 
-alert("successfully Signed Out .");
-                window.location="index.php";
+              Swal.fire({
+                title: 'Alert',
+                text: 'Successfully Signed Out!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                
+                  location.reload();
+              }
+          });
                 
 
             } else {
@@ -225,10 +246,25 @@ function updateprofile(){
             if (t == "updated" || t == "saved") {
               window.location.reload();
             } else if (t=="you have not selected any image."){
-              window.location.reload();
-                alert(t);
+              
+              Swal.fire({
+                title: 'Alert',
+                text: t,
+                icon: 'info',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                
+                  location.reload();
+              }
+          });
             }else{
-              alert(t);
+              Swal.fire({
+                title: 'Alert',
+                text: t,
+                icon: 'info',
+                confirmButtonText: 'OK'
+            });
             }
 
         }
@@ -328,7 +364,18 @@ function listproduct(){
             var t = r.responseText;
 
             if (t == "success") {
-              window.location = "products.php";
+              Swal.fire({
+                title: 'Alert',
+                text: 'product added succesfully!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                
+                window.location = "products.php";
+              }
+          });
+              
             } else {
                 alert(t);
             }
@@ -411,7 +458,12 @@ function sendId(id) {
           if (t == "success") {
               window.location = "updateProduct.php";
           } else {
-              alert(t);
+            Swal.fire({
+              title: 'Alert',
+              text: t,
+              icon: 'info',
+              confirmButtonText: 'OK'
+          });
           }
       }
   }
@@ -449,16 +501,46 @@ function updateproduct() {
           var t = r.responseText;
 
           if (t == "success") {
-            window.location = "products.php";
+            Swal.fire({
+              title: 'Alert',
+              text: 'product Updated succesfully!',
+              icon: 'success',
+              confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+              window.location = "products.php";
+            }
+        });
           } else if (t == "Invalid Image Count") {
 
               if (confirm("Don't you want to update Product Images?") == true) {
+                Swal.fire({
+                  title: 'Alert',
+                  text: 'product added succesfully!',
+                  icon: 'success',
+                  confirmButtonText: 'OK'
+              }).then((result) => {
+                if (result.isConfirmed) {
+                  
                   window.location = "products.php";
+                }
+            });
               } else {
-                  alert("Select images.");
+                   Swal.fire({
+                title: 'Alert',
+                text: 'Select Images!',
+                icon: 'info',
+                confirmButtonText: 'OK'
+            });
               }
           } else {
-              alert(t);
+            Swal.fire({
+              title: 'Alert',
+              text: t,
+              icon: 'info',
+              confirmButtonText: 'OK'
+          });
           }
       }
   }
@@ -537,12 +619,31 @@ function addwatchlist(id){
       if (r.status == 200 && r.readyState == 4) {
           var t = r.responseText;
           if (t == "Added") {
-              alert("Product added to the watchlist successfully.");
+            
               document.getElementById(id).innerHTML = "Added to watchlist";
-              window.location.reload();
+            Swal.fire({
+                title: 'Alert',
+                text: 'Added to watchlist!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                
+                  location.reload();
+              }
+          });
           } else if (t == "Removed") {
-              alert("Product removed from watchlist successfully.");
-              window.location.reload();
+            Swal.fire({
+              title: 'Alert',
+              text: 'Product Removed from to watchlist!',
+              icon: 'error',
+              confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+                location.reload();
+            }
+        });
           } else {
               alert(t);
               window.location.reload();
@@ -565,15 +666,33 @@ function addtocart(id){
       if (r.status == 200 && r.readyState == 4) {
           var t = r.responseText;
           if (t == "Product quantity updated in the cart") {
-              alert("Product quantity updated in the cart");
-              window.location.reload();
+            Swal.fire({
+              title: 'Alert',
+              text: 'Product quantity updated in the cart!',
+              icon: 'success',
+              confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+                location.reload();
+            }
+        });
+              
           } else if (t == "Product added to cart") {
-              alert("Product added to cart");
-              window.location.reload();
-
+            Swal.fire({
+              title: 'Alert',
+              text: 'Product added to cart!',
+              icon: 'success',
+              confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+                location.reload();
+            }
+        });
               
           } else {
-              alert(); 
+              alert(t); 
           }
       }
   }
@@ -592,12 +711,29 @@ function removefromcart(id){
       if (r.status == 200 && r.readyState == 4) {
           var t = r.responseText;
           if (t == "Product quantity updated") {
-              alert("product quantity updated");
-              window.location.reload();
+            Swal.fire({
+              title: 'Alert',
+              text: 'Product quantity updated!',
+              icon: 'success',
+              confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+                location.reload();
+            }
+        });
           } else if (t == "Product removed from cart") {
-              alert("product Removed from cart");
-              window.location.reload();
-
+            Swal.fire({
+              title: 'Alert',
+              text: 'Product removed from cart!',
+              icon: 'error',
+              confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+                location.reload();
+            }
+        });
               
           } else {
               alert(t); 
@@ -621,13 +757,30 @@ function removecustomer(email){
       if (r.status == 200 && r.readyState == 4) {
           var t = r.responseText;
           if (t == "Customer succesfully removed from the Database") {
-              alert("Customer succesfully removed from the Database");
-              window.location.reload();
+            Swal.fire({
+              title: 'Alert',
+              text: 'Customer Removed from Database!',
+              icon: 'success',
+              confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+                location.reload();
+            }
+        });
                      
           } else {
-              alert(t); 
-              window.location.reload();
-
+            Swal.fire({
+              title: 'Alert',
+              text: t,
+              icon: 'info',
+              confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+                location.reload();
+            }
+        });
           }
       } 
   }
@@ -647,8 +800,17 @@ function removeproduct(id){
       if (r.status == 200 && r.readyState == 4) {
           var t = r.responseText;
           if (t == "product succesfully removed from the Database") {
-              alert("product succesfully removed from the Database");
-              window.location.reload();
+            Swal.fire({
+              title: 'Alert',
+              text: 'product succesfully removed from the Database!',
+              icon: 'success',
+              confirmButtonText: 'OK'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              
+                location.reload();
+            }
+        });
                      
           } else {
               alert(t); 

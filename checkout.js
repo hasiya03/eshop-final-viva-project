@@ -1,4 +1,4 @@
-// This is your test publishable API key.
+
 const stripe = Stripe("pk_test_51PLVTDFCE9FRCBdhY6l5nfYBceTnqv7OYaowCUQVUmyQvzBNia7v18237FIDAt3joZgBeRYakFWVpOsSS79eIwNP00xHpgK9RP");
 
 document.getElementById('checkout-form').addEventListener('submit', async (event) => {

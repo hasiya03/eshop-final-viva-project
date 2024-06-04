@@ -19,16 +19,14 @@
             <div class="row">
                 <div class="col-md-6">
                     <h4>About Us</h4>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
-                        when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                         Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
+                    <p>
+
+Welcome to New Tech, your premier destination for cutting-edge electronic items. Explore our curated selection of the latest gadgets, devices, and tech accessories, all designed to elevate your digital lifestyle. With a commitment to quality, innovation, and customer satisfaction, we strive to bring you the best in technology. Shop now and stay ahead with New Tech. </div>
                 <div class="col-md-3">
                     <h4>Quick Links</h4>
                     <ul class="list-styled">
-                        <li><a href="homepage.php">Home</a></li>
-                        <li><a href="homepage.php">Products</a></li>
-                        <li><a href="services.php">Services</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="index.php">Products</a></li>
                         <li><a href="contactus.php">Contact</a></li>
                     </ul>
                 </div>
