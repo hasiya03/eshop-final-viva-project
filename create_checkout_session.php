@@ -26,7 +26,7 @@ try {
     while ($cart_data = $cart_rs->fetch_assoc()) {
         $line_items[] = [
             'price_data' => [
-                'currency' => 'lkr',
+                'currency' => 'aud',
                 'product_data' => [
                     'name' => $cart_data['Name'],
                     
@@ -40,7 +40,7 @@ try {
     // Adding shipping cost as a separate line item
     $line_items[] = [
         'price_data' => [
-            'currency' => 'lkr',
+            'currency' => 'aud',
             'product_data' => [
                 'name' => 'Shipping',
             ],
@@ -53,8 +53,8 @@ try {
         'payment_method_types' => ['card'],
         'line_items' => [$line_items],
         'mode' => 'payment',
-        'success_url' => 'http://localhost/eshop-final-viva-project/success.php',
-        'cancel_url' => 'http://localhost/eshop-final-viva-project/cancel.php',
+        'success_url' => 'http://localhost/eshop-final-viva-project/cart.php?payment=success',
+        'cancel_url' => 'http://localhost/eshop-final-viva-project/cart.php?payment=cancel',
     ]);
 
     echo json_encode(['sessionId' => $checkout_session->id]);

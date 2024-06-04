@@ -1,9 +1,15 @@
 <?php
 include "connection.php";
+
+function removeItemsFromCart($email) {
+    
+    Database::iud("DELETE FROM cart WHERE users_email = '$email'");
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +18,9 @@ include "connection.php";
 
     <link rel="stylesheet" href="style.css">
 
-    
+
 </head>
+
 <body>
     <?php include 'header.php'; ?>
 
@@ -24,6 +31,47 @@ include "connection.php";
                     <div class="row">
                         <div class="col">
                             <h4><b>Shopping Cart</b></h4>
+                            <?php
+                            if (isset($_GET['payment'])) {
+                                if ($_GET['payment'] = 'success') {
+                                    if (isset($_SESSION['u']) && isset($_SESSION['u']['Email'])) {
+                                      
+                                        removeItemsFromCart($_SESSION['u']['Email']);
+                                    }
+
+                            ?>
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            Swal.fire({
+                                                title: 'Alert',
+                                                text: 'Product Purchase Successful!',
+                                                icon: 'success',
+                                                confirmButtonText: 'OK'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    window.location.href = 'index.php';
+                                                }
+                                            });
+                                        });
+                                    </script>
+                                <?php } elseif ($_GET['payment'] == 'cancel') { ?>
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            Swal.fire({
+                                                title: 'Alert',
+                                                text: 'Product Purchase Unsuccessful!',
+                                                icon: 'error',
+                                                confirmButtonText: 'OK'
+                                            }).then((result) => {
+                                                if (result.isConfirmed) {
+                                                    location.reload();
+                                                }
+                                            });
+                                        });
+                                    </script>
+                            <?php }
+                            }
+                            ?>
                         </div>
                         <?php
                         $selected_shipping = 0;
@@ -108,38 +156,38 @@ include "connection.php";
             </div>
         </div>
     </div>
-    <?php } ?>
-    <!--offcanvas-->
+<?php } ?>
+<!--offcanvas-->
 
-    <!--watchlist-->
-    <div class="offcanvas offcanvas-end  text-bg-dark" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasRightLabel">
-        <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Watchlist
-                <i class="bi bi-bookmark-heart-fill"></i>
-            </h5>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-            <div>
+<!--watchlist-->
+<div class="offcanvas offcanvas-end  text-bg-dark" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Watchlist
+            <i class="bi bi-bookmark-heart-fill"></i>
+        </h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <div>
 
-                <table class="table table-dark table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">item image</th>
-                            <th scope="col">item name</th>
-                            <th scope="col">price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">item image</th>
+                        <th scope="col">item name</th>
+                        <th scope="col">price</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                        <?php
-                        if (isset($_SESSION["u"])) {
+                    <?php
+                    if (isset($_SESSION["u"])) {
 
-                            $email = $_SESSION["u"]["Email"];
-                       
+                        $email = $_SESSION["u"]["Email"];
 
-                            $watchlist_rs = Database::search("SELECT DISTINCT product_details.Product_ID, product_details.Name,
+
+                        $watchlist_rs = Database::search("SELECT DISTINCT product_details.Product_ID, product_details.Name,
                         product_details.QTY, 
                         product_details.price, 
                         (SELECT Product_Image_Path 
@@ -155,68 +203,69 @@ include "connection.php";
                         WHERE 
                         watchlist.user_email = '" . $email . "'");
 
-                            $watchlist_num = $watchlist_rs->num_rows;
-                            for ($x = 0; $x < $watchlist_num; $x++) {
-                                $watchlist_data = $watchlist_rs->fetch_assoc();
+                        $watchlist_num = $watchlist_rs->num_rows;
+                        for ($x = 0; $x < $watchlist_num; $x++) {
+                            $watchlist_data = $watchlist_rs->fetch_assoc();
 
-                            ?>
-                        <tr>
-                            <th scope="row"><?php echo $watchlist_data["Product_ID"]; ?></th>
-                            <td><img src="<?php echo $watchlist_data["Product_Image_Path"] ?>" class="cato-img  " alt="..."></td>
+                    ?>
+                            <tr>
+                                <th scope="row"><?php echo $watchlist_data["Product_ID"]; ?></th>
+                                <td><img src="<?php echo $watchlist_data["Product_Image_Path"] ?>" class="cato-img  " alt="..."></td>
 
-                            <td><?php echo $watchlist_data["Name"]; ?></td>
+                                <td><?php echo $watchlist_data["Name"]; ?></td>
 
-                            <td><?php echo $watchlist_data["price"]; ?></td>
- 
-                            <td>
-                                <div class="row m-1 ">
-                                    <?php
+                                <td><?php echo $watchlist_data["price"]; ?></td>
 
-                                    if ($watchlist_data["QTY"] > 0) {
-                                    ?>
-                                        <button class="col btn btn-primary m-1" onclick='addtocart(<?php echo $watchlist_data["Product_ID"] ?>);'><i class="bi bi-bag-plus"></i></button>
-                                    <?php
+                                <td>
+                                    <div class="row m-1 ">
+                                        <?php
 
-                                    } else {
-                                    ?>
-                                        <button class="col btn btn-primary m-1 d-none">Add to Cart</button>
-                                    <?php
-                                    }
+                                        if ($watchlist_data["QTY"] > 0) {
+                                        ?>
+                                            <button class="col btn btn-primary m-1" onclick='addtocart(<?php echo $watchlist_data["Product_ID"] ?>);'><i class="bi bi-bag-plus"></i></button>
+                                        <?php
+
+                                        } else {
+                                        ?>
+                                            <button class="col btn btn-primary m-1 d-none">Add to Cart</button>
+                                        <?php
+                                        }
 
 
-                                    ?>
+                                        ?>
 
-                                    <button class="col btn btn-danger m-1 " onclick='addwatchlist(<?php echo $watchlist_data["Product_ID"] ?>);'><i class="bi bi-x-square-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
+                                        <button class="col btn btn-danger m-1 " onclick='addwatchlist(<?php echo $watchlist_data["Product_ID"] ?>);'><i class="bi bi-x-square-fill"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php
+                        }
+                    } else {
+                        ?>
+
+                        <td colspan="5" class="text-center text-white-50 fw-bold"><a href="signup.php">Sign In<a></a> to Your Account First</td>
+
                     <?php
-                            }
-                        } else {
+                    }
                     ?>
 
-                    <td colspan="5" class="text-center text-white-50 fw-bold"><a href="signup.php">Sign In<a></a> to Your Account First</td>
 
-                <?php
-                        }
-                ?>
-
-
-                    </tbody>
-                </table>
-            </div>
-
+                </tbody>
+            </table>
         </div>
+
     </div>
-    <!--offcanvas-->
+</div>
+<!--offcanvas-->
 
-    <script src="https://js.stripe.com/v3/"></script>
-    
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://js.stripe.com/v3/"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-    <script src="checkout.js" defer></script>
-    <script src="script.js"></script>
-          
+<script src="checkout.js" defer></script>
+<script src="script.js"></script>
+
 </body>
+
 </html>
