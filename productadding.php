@@ -7,6 +7,8 @@
     <title>
         New Tech||Product Adding
     </title>
+    
+  <link rel="icon" href="pics/new tech custom logo.png" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="swiper.css">
 

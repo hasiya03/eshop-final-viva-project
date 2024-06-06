@@ -11,12 +11,11 @@ $condition = $_POST["con"];
 $color = $_POST["col"];
 $from = $_POST["pf"];
 $to = $_POST["pt"];
-$sort = $_POST["s"];
 
 $query = "SELECT * FROM `product_details`";
 $status = 0;
 
-if ($sort == 0) {
+
     if ($category != 0 && $status == 0) {
         $query .= " WHERE `Catergory_Catergory_id`='" . $category . "'";
         $status = 1;
@@ -117,35 +116,11 @@ if ($sort == 0) {
             $query .= " AND `price` BETWEEN '" . $from . "' AND '" . $to . "'";
         }
     }
-} else if ($sort == 1) {
 
-    if (!empty($search_txt)) {
-        $query .= " WHERE `Name` LIKE '%" . $search_txt . "%' ORDER BY `price` ASC";
-        $status = 1;
-    }
-} else if ($sort == 2) {
 
-    if (!empty($search_txt)) {
-        $query .= " WHERE `Name` LIKE '%" . $search_txt . "%' ORDER BY `price` DESC";
-        $status = 1;
-    }
-} else if ($sort == 3) {
+?> 
 
-    if (!empty($search_txt)) {
-        $query .= " WHERE `Name` LIKE '%" . $search_txt . "%' ORDER BY `QTY` ASC";
-        $status = 1;
-    }
-} else if ($sort == 4) {
-
-    if (!empty($search_txt)) {
-        $query .= " WHERE `Name` LIKE '%" . $search_txt . "%' ORDER BY `QTY` DESC";
-        $status = 1;
-    }
-}
-
-?>
-
-<div class="">
+<div class="" id="view_area">
     <div class="offset-lg-1 col-12 col-lg-10 text-center">
         <div class="row g-2 justify-content-center">
 
@@ -160,7 +135,7 @@ if ($sort == 0) {
             $product_rs = Database::search($query);
             $product_num = $product_rs->num_rows;
 
-            $results_per_page = 2;
+            $results_per_page = 4;
             $number_of_pages = ceil($product_num / $results_per_page);
 
             $page_results = ($pageno - 1) * $results_per_page;
@@ -177,7 +152,6 @@ if ($sort == 0) {
                 $product_img_data = $product_img_rs->fetch_assoc();
 
             ?>
-
 
                 <div class="card h-100 m-1" style="width: 18rem;">
 
@@ -198,18 +172,22 @@ if ($sort == 0) {
                                         $watchlist_num = $watchlist_rs->num_rows;
                                         if ($watchlist_num == 1) {
                                     ?>
-                                            <a href="<?php echo "productpage.php?id=" . ($selected_data["Product_ID"]); ?>" class="btn btn-primary">BUY NOW</a>
+                                           <div class="row g-2">
+                                           <a href="<?php echo "productpage.php?id=" . ($selected_data["Product_ID"]); ?>" class="btn btn-primary">BUY NOW</a>
 
                                             <a href="#" class="btn btn-primary" onclick='addtocart(<?php echo $selected_data["Product_ID"] ?>);'>ADD TO CART</a>
                                             <a href="#" class="btn btn-primary" onclick='addwatchlist(<?php echo $selected_data["Product_ID"] ?>);' id="<?php echo $selected_data["Product_ID"] ?>">ADDED TO WISHLIST</a>
-
+                                            </div>
                                         <?php
                                         } else {
                                         ?>
+                                           <div class="row g-2">
+
                                             <a href="<?php echo "productpage.php?id=" . ($selected_data["Product_ID"]); ?>" class="btn btn-primary">BUY NOW</a>
 
                                             <a href="#" class="btn btn-primary" onclick='addtocart(<?php echo $selected_data["Product_ID"] ?>);'>ADD TO CART</a>
                                             <a href="#" class="btn btn-primary" onclick='addwatchlist(<?php echo $selected_data["Product_ID"] ?>);' id="<?php echo $selected_data["Product_ID"] ?>">ADD TO WISHLIST</a>
+                                            </div>
 
                                         <?php
                                         }
@@ -220,12 +198,21 @@ if ($sort == 0) {
 
 
                                     ?>
+                                    <div class="row g-1">
+                                            <a href="<?php echo "productpage.php?id=" . ($selected_data["Product_ID"]); ?>" class="btn btn-primary">BUY NOW</a>
+
                                         <a href="#" class="btn btn-primary" onclick="showAlert()">ADD TO CART</a>
 
                                         <a href="#" class="btn btn-primary" onclick="showAlert()">ADD TO WISHLIST</a>
+                                        </div>
                                         <script>
                                             function showAlert() {
-                                                alert("Please SignIn !");
+                                                Swal.fire({
+                                                    title: 'Alert',
+                                                    text: 'Please Sign in first!',
+                                                    icon: 'info',
+                                                    confirmButtonText: 'OK'
+                                                });
                                             }
                                         </script>
 
@@ -266,7 +253,7 @@ if ($sort == 0) {
                                         <a href="#" class="btn btn-primary" onclick="showAlert()" ?>ADD TO WISHLIST</a>
                                         <script>
                                             function showAlert() {
-                                                alert("Please SignIn !");
+                                            
                                             }
                                         </script>
 

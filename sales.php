@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lifetime Sales</title>
+    <title>New Tech||Admin Sales Page</title>
+   
+  <link rel="icon" href="pics/new tech custom logo.png" />
     
 </head>
 <body>

@@ -67,6 +67,7 @@ if (!empty($text)) {
                                 if ($selected_data["QTY"] > 0) {
                                 ?>
                                     <span class="card-text text-success fw-bold">In Stock</span></br>
+<div class="row g-2">
 
                                     <?php
                                     if (isset($_SESSION["u"])) {
@@ -94,14 +95,19 @@ if (!empty($text)) {
                                     <?php
                                     } else {
 
-
+                                        
                                     ?>
                                         <a href="#" class="btn btn-primary" onclick="showAlert()">ADD TO CART</a>
 
                                         <a href="#" class="btn btn-primary" onclick="showAlert()">ADD TO WISHLIST</a>
                                         <script>
                                             function showAlert() {
-                                                alert("Please SignIn !");
+                                                Swal.fire({
+                                                    title: 'Alert',
+                                                    text: 'Please Sign in first!',
+                                                    icon: 'info',
+                                                    confirmButtonText: 'OK'
+                                                });
                                             }
                                         </script>
 
@@ -110,11 +116,13 @@ if (!empty($text)) {
 
                                     }
                                     ?>
+                                    </div>
                                 <?php
 
                                 } else {
                                 ?>
                                     <span class="card-text text-danger fw-bold">Out of Stock</span></br>
+                                    <a href="<?php echo "productpage.php?id=" . ($prod_data["Product_ID"]); ?>" class="btn btn-primary">BUY NOW</a>
 
                                     <?php
                                     if (isset($_SESSION["u"])) {
@@ -140,7 +148,12 @@ if (!empty($text)) {
                                         <a href="#" class="btn btn-primary" onclick="showAlert()" ?>ADD TO WISHLIST</a>
                                         <script>
                                             function showAlert() {
-                                                alert("Please SignIn !");
+                                                Swal.fire({
+                                                    title: 'Alert',
+                                                    text: 'Please Sign in first!',
+                                                    icon: 'info',
+                                                    confirmButtonText: 'OK'
+                                                });
                                             }
                                         </script>
 

@@ -115,7 +115,7 @@ if (isset($_GET["id"])) {
                     <div class="row border-bottom border-dark">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item ">Home</li>
+                                <li class="breadcrumb-item "><a href="index.php">Home</a></li>
                                 <li class="breadcrumb-item ">Products</li>
                                 <li class="breadcrumb-item active" aria-current="page"><?php echo $product_data["Name"]; ?></li>
                             </ol>
@@ -127,7 +127,7 @@ if (isset($_GET["id"])) {
 
                             <p><?php echo  $product_data["Product_description"];  ?></p>
                             <div class="col-12 my-2">
-                                <span class="fs-6"><b>Warrenty : </b>6 Months Warranty</span><br />
+                                <span class="fs-6"><b>Warranty : </b>6 Months Warranty</span><br />
                                 <span class="fs-6"><b>Return Policy : </b>1 Months Return Policy</span><br />
                                 <span class="fs-6"><b>In Stock : </b><?php echo $product_data["QTY"]; ?> Items Available</span>
                             </div>

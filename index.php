@@ -11,6 +11,8 @@ include "connection.php";
     <title>
         New Tech||Homepage
     </title>
+    
+  <link rel="icon" href="pics/new tech custom logo.png" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
@@ -120,13 +122,14 @@ include "connection.php";
                                 <p class="card-text"><?php echo $prod_data["Product_description"] ?></p>
 
                                 <?php
- 
+
                                 if ($prod_data["QTY"] > 0) {
 
                                 ?>
                                     <span class="card-text text-success fw-bold">In Stock</span></br>
+                                    <div class="row g-2">
                                     <a href="<?php echo "productpage.php?id=" . ($prod_data["Product_ID"]); ?>" class="btn btn-primary">BUY NOW</a>
-                                    
+
                                     <?php
                                     if (isset($_SESSION["u"])) {
                                         $watchlist_rs = Database::search("SELECT * FROM `watchlist` WHERE `Product_id`='" . $prod_data["Product_ID"] . "' AND `user_email`='" . $_SESSION["u"]["Email"] . "'");
@@ -143,23 +146,23 @@ include "connection.php";
                                         <?php
                                         }
                                         ?>
-                                        <a href="#" class="btn btn-primary"onclick='addtocart(<?php echo $prod_data["Product_ID"] ?>);'>ADD TO CART</a>
+                                        <a href="#" class="btn btn-primary" onclick='addtocart(<?php echo $prod_data["Product_ID"] ?>);'>ADD TO CART</a>
                                     <?php
                                     } else {
 
 
                                     ?>
-                                        <a href="#" class="btn btn-primary"onclick="showAlert()">ADD TO CART</a>
+                                        <a href="#" class="btn btn-primary" onclick="showAlert()">ADD TO CART</a>
 
-                                        <a href="#" class="btn btn-primary" onclick="showAlert()" >ADD TO WISHLIST</a>
+                                        <a href="#" class="btn btn-primary" onclick="showAlert()">ADD TO WISHLIST</a>
                                         <script>
                                             function showAlert() {
                                                 Swal.fire({
-                title: 'Alert',
-                text: 'Please Sign in first!',
-                icon: 'info',
-                confirmButtonText: 'OK'
-            });
+                                                    title: 'Alert',
+                                                    text: 'Please Sign in first!',
+                                                    icon: 'info',
+                                                    confirmButtonText: 'OK'
+                                                });
                                             }
                                         </script>
 
@@ -170,14 +173,17 @@ include "connection.php";
                                     ?>
 
 
+</div>
 
-
-                                <?php 
+                                <?php
+                                
 
                                 } else {
                                 ?>
-                                    <span class="card-text text-danger fw-bold">Out of  Stock</span></br>
-                                    
+                                    <span class="card-text text-danger fw-bold">Out of Stock</span></br>
+                                    <a href="<?php echo "productpage.php?id=" . ($prod_data["Product_ID"]); ?>" class="btn btn-primary">BUY NOW</a>
+
+
                                     <?php
                                     if (isset($_SESSION["u"])) {
                                         $watchlist_rs = Database::search("SELECT * FROM `watchlist` WHERE `Product_id`='" . $prod_data["Product_ID"] . "' AND `user_email`='" . $_SESSION["u"]["Email"] . "'");
@@ -202,13 +208,13 @@ include "connection.php";
                                         <a href="#" class="btn btn-primary" onclick="showAlert()" ?>ADD TO WISHLIST</a>
                                         <script>
                                             function showAlert() {
-                                               
-              Swal.fire({
-                title: 'Alert',
-                text: 'Please Sign in first!',
-                icon: 'info',
-                confirmButtonText: 'OK'
-            });
+
+                                                Swal.fire({
+                                                    title: 'Alert',
+                                                    text: 'Please Sign in first!',
+                                                    icon: 'info',
+                                                    confirmButtonText: 'OK'
+                                                });
                                             }
                                         </script>
 
@@ -219,10 +225,10 @@ include "connection.php";
                                     ?>
 
 
-                               
 
 
-                               <?php
+
+                                <?php
 
 
                                 }
@@ -291,7 +297,7 @@ include "connection.php";
                         if (isset($_SESSION["u"])) {
 
                             $email = $_SESSION["u"]["Email"];
-                       
+
 
                             $watchlist_rs = Database::search("SELECT DISTINCT product_details.Product_ID, product_details.Name,
                         product_details.QTY, 
@@ -313,47 +319,47 @@ include "connection.php";
                             for ($x = 0; $x < $watchlist_num; $x++) {
                                 $watchlist_data = $watchlist_rs->fetch_assoc();
 
-                            ?>
-                        <tr>
-                            <th scope="row"><?php echo $watchlist_data["Product_ID"]; ?></th>
-                            <td><img src="<?php echo $watchlist_data["Product_Image_Path"] ?>" class="cato-img  " alt="..."></td>
+                        ?>
+                                <tr>
+                                    <th scope="row"><?php echo $watchlist_data["Product_ID"]; ?></th>
+                                    <td><img src="<?php echo $watchlist_data["Product_Image_Path"] ?>" class="cato-img  " alt="..."></td>
 
-                            <td><?php echo $watchlist_data["Name"]; ?></td>
+                                    <td><?php echo $watchlist_data["Name"]; ?></td>
 
-                            <td><?php echo $watchlist_data["price"]; ?></td>
- 
-                            <td>
-                                <div class="row m-1 ">
-                                    <?php
+                                    <td><?php echo $watchlist_data["price"]; ?></td>
 
-                                    if ($watchlist_data["QTY"] > 0) {
-                                    ?>
-                                        <button class="col btn btn-primary m-1" onclick='addtocart(<?php echo $watchlist_data["Product_ID"] ?>);'><i class="bi bi-bag-plus"></i></button>
-                                    <?php
+                                    <td>
+                                        <div class="row m-1 ">
+                                            <?php
 
-                                    } else {
-                                    ?>
-                                        <button class="col btn btn-primary m-1 d-none">Add to Cart</button>
-                                    <?php
-                                    }
+                                            if ($watchlist_data["QTY"] > 0) {
+                                            ?>
+                                                <button class="col btn btn-primary m-1" onclick='addtocart(<?php echo $watchlist_data["Product_ID"] ?>);'><i class="bi bi-bag-plus"></i></button>
+                                            <?php
+
+                                            } else {
+                                            ?>
+                                                <button class="col btn btn-primary m-1 d-none">Add to Cart</button>
+                                            <?php
+                                            }
 
 
-                                    ?>
+                                            ?>
 
-                                    <button class="col btn btn-danger m-1 " onclick='addwatchlist(<?php echo $watchlist_data["Product_ID"] ?>);'><i class="bi bi-x-square-fill"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    <?php
+                                            <button class="col btn btn-danger m-1 " onclick='addwatchlist(<?php echo $watchlist_data["Product_ID"] ?>);'><i class="bi bi-x-square-fill"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php
                             }
                         } else {
-                    ?>
+                            ?>
 
-                    <td colspan="5" class="text-center text-white-50 fw-bold"><a href="signup.php">Sign In<a></a> to Your Account First</td>
+                            <td colspan="5" class="text-center text-white-50 fw-bold"><a href="signup.php">Sign In<a></a> to Your Account First</td>
 
-                <?php
+                        <?php
                         }
-                ?>
+                        ?>
 
 
                     </tbody>

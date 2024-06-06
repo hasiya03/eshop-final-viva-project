@@ -559,19 +559,17 @@ function advancedSearch(x) {
   var color = document.getElementById("c3");
   var from = document.getElementById("pf");
   var to = document.getElementById("pt");
-  var sort = document.getElementById("s");
 
   var f = new FormData();
 
 
-  f.append("cat", category.value);
+  f.append("cat", category.value); 
   f.append("b", brand.value);
   f.append("mo", model.value);
   f.append("con", condition.value);
   f.append("col", color.value);
   f.append("pf", from.value);
   f.append("pt", to.value);
-  f.append("s", sort.value);
   f.append("page", x);
 
   var r = new XMLHttpRequest();
@@ -827,3 +825,11 @@ function removeproduct(id){
 
 }
 
+function showAlert(){
+  Swal.fire({
+    title: 'Alert',
+    text: 'Please Sign in first!',
+    icon: 'info',
+    confirmButtonText: 'OK'
+});
+}
