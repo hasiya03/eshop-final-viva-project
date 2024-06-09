@@ -37,7 +37,7 @@ if (isset($_SESSION["u"])) {
         } else {
 
             Database::iud("INSERT INTO `customer_address`(`First_Line`,`Second_Line`,`ZIP_code`,`City_City_Id`,`Customer_details_Email`) 
-                        VALUES ('" . $line1 . "','" . $line2 . "','" . $pc . "','" . $city . "','" . $user_email . "')");
+                        VALUES ('" . $line1 . "','" . $line2 . "','" . $zp . "','" . $city . "','" . $user_email . "')");
 
         }
         if(sizeof($_FILES)==1){

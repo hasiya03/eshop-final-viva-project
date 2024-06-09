@@ -77,7 +77,7 @@
 
                                         ?>
                                         <span class="fw-bold"><?php echo $user_data["Email"]; ?></span>
-                                        <span class="fw-bold text-black-50"><?php echo $email; ?></span>
+                                        
 
 
                                         <input type="file" class="d-none" id="profileImage" />
@@ -86,8 +86,8 @@
                                     </div>
                                 </div>
 
-                                <div class="col-md-5 col-lg-9 offset-lg-2 border-end">
-                                    <div class="p-3 py-5">
+                                <div class="col-md-5 col-lg-9 offset-lg-2 ">
+                                    <div class="">
 
                                        
                                         <div class="row mt-4">
@@ -284,7 +284,7 @@
                                 <div class="col-md-4 text-center">
                                     <div class="row">
 
-                                        <span class="fw-bold text-black-50 mt-5 h1  carousal-caption">Recently purchased Items</span>
+                                        <span class="fw-bold text-black-50 mt-5 h1 offset-lg-5 profiletext-caption ">Recently purchased Items</span>
 
                                     </div>
                                 </div>
