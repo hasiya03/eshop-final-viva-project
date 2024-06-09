@@ -68,7 +68,7 @@
                             <label for="inputPassword4" class="form-label">Password</label>
                             <div class="input-group mb-3">
                                 <input type="password" class="form-control border border-dark-subtle" placeholder="***********" id="password" />
-                                <button type="button" class="btn btn-outline-secondary  "><i class="bi bi-eye"></i></button>
+                                <button type="button" class="btn btn-outline-secondary  " id="sup" onclick="showPassword4();"><i class="bi bi-eye"></i></button>
                             </div>
                         </div>
                         
@@ -119,7 +119,7 @@
                             <label for="inputPassword4" class="form-label">Password</label>
                             <div class="input-group mb-3">
                                 <input type="password" class="form-control border border-dark-subtle" id="loginepass">
-                                <button type="button" class="btn btn-outline-secondary  "><i class="bi bi-eye"></i></button>
+                                <button type="button" class="btn btn-outline-secondary  " id="lgp" onclick="showPassword3();"><i class="bi bi-eye"></i></button>
                             </div>
                         </div>
                         <div class="form-check">

@@ -129,6 +129,32 @@ function showPassword2() {
     rnpb.innerHTML = '<i class="bi bi-eye"></i>';
   }
 }
+function showPassword3() {
+  var rnp = document.getElementById("loginepass");
+  var rnpb = document.getElementById("lgp");
+
+  if (rnp.type == "password") {
+    rnp.type = "text";
+    rnpb.innerHTML = '<i class="bi bi-eye-slash-fill"></i>';
+  } else {
+    rnp.type = "password";
+    rnpb.innerHTML = '<i class="bi bi-eye"></i>';
+  }
+}
+
+function showPassword4() {
+  var rnp = document.getElementById("password");
+  var rnpb = document.getElementById("sup");
+
+  if (rnp.type == "password") {
+    rnp.type = "text";
+    rnpb.innerHTML = '<i class="bi bi-eye-slash-fill"></i>';
+  } else {
+    rnp.type = "password";
+    rnpb.innerHTML = '<i class="bi bi-eye"></i>';
+  }
+}
+
 
 function ResetPassword() {
   var email = document.getElementById("loginemail");
