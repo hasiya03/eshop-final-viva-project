@@ -61,4 +61,8 @@ body{
     font-weight: 400;
     font-style: normal;
   }
-  
+  @media (max-width: 767.98px) {
+    .carousel-caption {
+        display: none;
+    }
+}

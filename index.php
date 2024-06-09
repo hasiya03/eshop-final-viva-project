@@ -258,21 +258,7 @@ include "connection.php";
         </div>
 
         <!--paginations-->
-        <?php
-
-        $pageno = 1;
-        $product_rs = Database::search("SELECT* FROM `product_details`");
-        $product_num = $product_rs->num_rows;
-
-
-        $results_per_page = 2;
-        $number_of_pages = ceil($product_num / $results_per_page);
-
-
-
-
-
-        ?>
+        
 
     </div>
     <!--offcanvas-->
