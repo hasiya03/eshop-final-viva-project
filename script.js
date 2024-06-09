@@ -323,6 +323,29 @@ function changeProductImage() {
 }
 
 
+function preventNegativeInput(event) {
+  const inputField = event.target;
+  const value = inputField.value;
+  
+  if (value.includes('-')) {
+      Swal.fire({
+          title: 'Error',
+          text: 'Negative values are not allowed.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+      }).then(() => {
+          inputField.value = ''; // Clear the input field
+      });
+  }
+}
+
+// Attach event listeners to the specified fields
+document.getElementById("Qty").addEventListener('input', preventNegativeInput);
+document.getElementById("price").addEventListener('input', preventNegativeInput);
+document.getElementById("decolo").addEventListener('input', preventNegativeInput);
+document.getElementById("deoutcolo").addEventListener('input', preventNegativeInput);
+
+
 function listproduct(){
   var category = document.getElementById("Category");
     var brand = document.getElementById("brand");
@@ -337,6 +360,16 @@ function listproduct(){
     var doc = document.getElementById("deoutcolo");
     var desc = document.getElementById("Description");
     var image = document.getElementById("imageuploader");
+
+    if (qty.value < 0 || cost.value < 0 || dwc.value < 0 || doc.value < 0) {
+      Swal.fire({
+          title: 'Error',
+          text: 'Negative values are not allowed ',
+          icon: 'error',
+          confirmButtonText: 'OK'
+      });
+      return; // Exit the function if validation fails
+  }
 
     var f = new FormData();
     f.append("ca", category.value);
@@ -472,6 +505,7 @@ function sendId(id) {
   r.send();
 
 }
+
 function updateproduct() {
   var title = document.getElementById("t");
   var qty = document.getElementById("q");
@@ -480,6 +514,8 @@ function updateproduct() {
   var price = document.getElementById("newprice");
   var description = document.getElementById("d");
   var image = document.getElementById("imageuploader");
+
+  
 
   var f = new FormData();
   f.append("t", title.value);
@@ -557,6 +593,7 @@ function advancedSearch(x) {
   var model = document.getElementById("m");
   var condition = document.getElementById("c2");
   var color = document.getElementById("c3");
+  var storage = document.getElementById("c4");
   var from = document.getElementById("pf");
   var to = document.getElementById("pt");
 
@@ -568,6 +605,7 @@ function advancedSearch(x) {
   f.append("mo", model.value);
   f.append("con", condition.value);
   f.append("col", color.value);
+  f.append("sto", storage.value);
   f.append("pf", from.value);
   f.append("pt", to.value);
   f.append("page", x);
@@ -833,3 +871,4 @@ function showAlert(){
     confirmButtonText: 'OK'
 });
 }
+

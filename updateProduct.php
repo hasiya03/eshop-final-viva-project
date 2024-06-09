@@ -148,7 +148,7 @@ if (isset($_SESSION["u"])) {
                             <label class="form-label ">Quantity</label>
 
 
-                            <input type="number" class="form-control" value="<?php echo $product["QTY"]; ?>" id="q" />
+                            <input type="text" class="form-control" value="<?php echo $product["QTY"]; ?>" id="q" />
 
                         </div>
 

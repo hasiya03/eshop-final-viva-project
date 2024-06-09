@@ -143,7 +143,7 @@
                     </div>
                     <div class="col-md-6">
                         <label class="form-label ">Quantity</label>
-                        <input type="number" class="form-control" id="Qty" />
+                        <input type="text" class="form-control" id="Qty" />
                     </div>
 
                     <div class="col-md-6">
@@ -206,7 +206,7 @@
             <div class="col-lg-3">
                 <h5 class="offset-1">Recently Added products</h5>
                 <div class="swiper mySwiperVertical">
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper"> 
                         <div class="swiper-slide">Slide 1</div>
                         <div class="swiper-slide">Slide 2</div>
                         <div class="swiper-slide">Slide 3</div>

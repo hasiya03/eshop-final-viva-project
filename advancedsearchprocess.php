@@ -9,6 +9,7 @@ $brand = $_POST["b"];
 $model = $_POST["mo"];
 $condition = $_POST["con"];
 $color = $_POST["col"];
+$storage = $_POST["sto"];
 $from = $_POST["pf"];
 $to = $_POST["pt"];
 
@@ -94,6 +95,12 @@ $status = 0;
         $query .= " AND `color_Color_id`='" . $color . "'";
     }
 
+    if ($storage != 0 && $status == 0) {
+        $query .= " WHERE `storage_Storage_id`='" . $storage . "'";
+        $status = 1;
+    } else if ($color != 0 && $status != 0) {
+        $query .= " AND `storage_Storage_id`='" . $color . "'";
+    }
     if (!empty($from) && empty($to)) {
         if ($status == 0) {
             $query .= " WHERE `price` >= '" . $from . "'";
@@ -153,7 +160,7 @@ $status = 0;
 
             ?>
 
-                <div class="card h-100 m-1" style="width: 18rem;">
+                <div class="card mt-4" style="width: 18rem;">
 
                     <img src="<?php echo $product_img_data["Product_Image_Path"]; ?>" class=" card-img-top " style="height: 250px;" alt="product image">
                     <div class="card-body">

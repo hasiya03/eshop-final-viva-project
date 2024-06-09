@@ -26,23 +26,23 @@ require "connection.php";
 
 <body class="bg-info">
 
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
 
 
 
 
 
-            <div class=" col-11 col-lg-2 mx-3 my-4  border border-black rounded">
+            <div class=" container mt-2 border border-black rounded">
                 
 
 
                        
 
-                            <div class="col-12">
+                            <div class="container">
                                 <div class="row">
 
-                                    <div class="col-12 col-lg-12 mb-1 mt-3">
+                                    <div class="col-12 col-lg-4 mb-1 mt-3">
                                         <select class="form-select" id="c1">
                                             <option value="0">Select Category</option>
                                             <?php
@@ -60,7 +60,7 @@ require "connection.php";
                                         </select>
                                     </div>
 
-                                    <div class="col-12 col-lg-12 mb-1 mt-3">
+                                    <div class="col-12 col-lg-4 mb-1 mt-3">
                                         <select class="form-select" id="b1">
                                             <option value="0">Select Brand</option>
                                             <?php
@@ -78,7 +78,7 @@ require "connection.php";
                                         </select>
                                     </div>
 
-                                    <div class="col-12 col-lg-12 mb-3 mt-3">
+                                    <div class="col-12 col-lg-4 mb-3 mt-3">
                                         <select class="form-select" id="m">
                                             <option value="0">Select Model</option>
                                             <?php
@@ -95,7 +95,7 @@ require "connection.php";
                                         </select>
                                     </div>
 
-                                    <div class="col-12 col-lg-12 mb-3">
+                                    <div class="col-12 col-lg-4 mb-3">
                                         <select class="form-select" id="c2">
                                             <option value="0">Select Condition</option>
                                             <?php
@@ -112,9 +112,25 @@ require "connection.php";
                                         </select>
                                     </div>
 
-                                    <div class="col-12 col-lg-12 mb-3">
+                                    <div class="col-12 col-lg-4 mb-3">
+                                        <select class="form-select" id="c4">
+                                            <option value="0">Select Storage</option>
+                                            <?php
+                                            $storage_rs = Database::search("SELECT * FROM `storage`");
+                                            $storage_num = $storage_rs->num_rows;
+
+                                            for ($x = 0; $x < $storage_num; $x++) {
+                                                $storage_data = $storage_rs->fetch_assoc();
+                                            ?>
+                                                <option value="<?php echo $storage_data["Storage_id"] ?>"><?php echo $storage_data["Amount"] ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-lg-4 mb-3">
                                         <select class="form-select" id="c3">
-                                            <option value="0">Select Colour</option>
+                                            <option value="0">Select Color</option>
                                             <?php
                                             $color_rs = Database::search("SELECT * FROM `color`");
                                             $color_num = $color_rs->num_rows;
@@ -132,11 +148,14 @@ require "connection.php";
                                         <div class="col-12 col-lg-6 mb-3">
                                             <input type="text" class="form-control" placeholder="Price From..." id="pf" />
                                         </div>
+                                        
 
                                         <div class="col-12 col-lg-6 mb-3">
                                             <input type="text" class="form-control" placeholder="Price To..." id="pt" />
 
                                         </div>
+
+                                        
                                   
 
                                     <div class="col-6   mb-3 d-grid">
@@ -156,7 +175,11 @@ require "connection.php";
                 
             </div>
 
-            <div class="  col-12 col-lg-9 bg-body rounded mb-3 mt-4">
+            
+
+        </div>
+    </div>
+    <div class="col-10 offset-1 bg-body rounded mb-3 mt-4">
                 
 
                 <div class="row">
@@ -174,9 +197,6 @@ require "connection.php";
                 </div>
                 
             </div>
-
-        </div>
-    </div>
     <!--watchlist-->
     <div class="offcanvas offcanvas-end  text-bg-dark" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">

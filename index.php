@@ -11,11 +11,15 @@ include "connection.php";
     <title>
         New Tech||Homepage
     </title>
-    
-  <link rel="icon" href="pics/new tech custom logo.png" />
+
+    <link rel="icon" href="pics/new tech custom logo.png" />
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -26,23 +30,25 @@ include "connection.php";
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="pics/corousal/dd_environment_trade_in__ffgz1k6741e2_large_2x.jpg" class="d-block w-100" alt="...">
-                    <div class="carousel-caption  d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
+                    <div class="carousel-caption d-md-block">
+                    <div class="animate__animated animate__fadeInDown display-1 archivo-black-regular">Welcome to</div>
+                    <div class="animate__animated animate__fadeInUp display-1 archivo-black-regular">New Tech</div>
+                </div>
                 </div>
                 <div class="carousel-item">
                     <img src="pics/corousal/Lotus Flower Theme KeyCap Set, OEM Profile PBT Subdye Keycap, Ink Painting Theme Gaming Mechanical Keyboard Keycap, Black Artisan Keycaps.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption  d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
+                    <h5 class="animate__animated animate__fadeInLeft archivo-black-regular">Stylish Keycap Sets</h5>
+                    <p><h1 class="animate__animated animate__zoomIn archivo-black-regular">Enhance Your Typing Experience</h1></p>
+              
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img src="pics/corousal/SDSAC-7339-S24U-Exclusive-Colors-HP-KV-DT-1440x640.jpg" class="d-block w-100" alt="...">
                     <div class="carousel-caption  d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
+                 
+                    <p><div class="animate__animated animate__lightSpeedInRight archivo-black-regular text-dark display-2">Find Your Perfect Match</div></p>
+             
                     </div>
                 </div>
             </div>
@@ -128,55 +134,55 @@ include "connection.php";
                                 ?>
                                     <span class="card-text text-success fw-bold">In Stock</span></br>
                                     <div class="row g-2">
-                                    <a href="<?php echo "productpage.php?id=" . ($prod_data["Product_ID"]); ?>" class="btn btn-primary">BUY NOW</a>
+                                        <a href="<?php echo "productpage.php?id=" . ($prod_data["Product_ID"]); ?>" class="btn btn-primary">BUY NOW</a>
 
-                                    <?php
-                                    if (isset($_SESSION["u"])) {
-                                        $watchlist_rs = Database::search("SELECT * FROM `watchlist` WHERE `Product_id`='" . $prod_data["Product_ID"] . "' AND `user_email`='" . $_SESSION["u"]["Email"] . "'");
-                                        $watchlist_num = $watchlist_rs->num_rows;
-                                        if ($watchlist_num == 1) {
-                                    ?>
-                                            <a href="#" class="btn btn-primary" onclick='addwatchlist(<?php echo $prod_data["Product_ID"] ?>);' id="<?php echo $prod_data["Product_ID"] ?>">ADDED TO WISHLIST</a>
+                                        <?php
+                                        if (isset($_SESSION["u"])) {
+                                            $watchlist_rs = Database::search("SELECT * FROM `watchlist` WHERE `Product_id`='" . $prod_data["Product_ID"] . "' AND `user_email`='" . $_SESSION["u"]["Email"] . "'");
+                                            $watchlist_num = $watchlist_rs->num_rows;
+                                            if ($watchlist_num == 1) {
+                                        ?>
+                                                <a href="#" class="btn btn-primary" onclick='addwatchlist(<?php echo $prod_data["Product_ID"] ?>);' id="<?php echo $prod_data["Product_ID"] ?>">ADDED TO WISHLIST</a>
 
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <a href="#" class="btn btn-primary" onclick='addwatchlist(<?php echo $prod_data["Product_ID"] ?>);' id="<?php echo $prod_data["Product_ID"] ?>">ADD TO WISHLIST</a>
+
+                                            <?php
+                                            }
+                                            ?>
+                                            <a href="#" class="btn btn-primary" onclick='addtocart(<?php echo $prod_data["Product_ID"] ?>);'>ADD TO CART</a>
                                         <?php
                                         } else {
+
+
                                         ?>
-                                            <a href="#" class="btn btn-primary" onclick='addwatchlist(<?php echo $prod_data["Product_ID"] ?>);' id="<?php echo $prod_data["Product_ID"] ?>">ADD TO WISHLIST</a>
+                                            <a href="#" class="btn btn-primary" onclick="showAlert()">ADD TO CART</a>
+
+                                            <a href="#" class="btn btn-primary" onclick="showAlert()">ADD TO WISHLIST</a>
+                                            <script>
+                                                function showAlert() {
+                                                    Swal.fire({
+                                                        title: 'Alert',
+                                                        text: 'Please Sign in first!',
+                                                        icon: 'info',
+                                                        confirmButtonText: 'OK'
+                                                    });
+                                                }
+                                            </script>
+
 
                                         <?php
+
                                         }
                                         ?>
-                                        <a href="#" class="btn btn-primary" onclick='addtocart(<?php echo $prod_data["Product_ID"] ?>);'>ADD TO CART</a>
-                                    <?php
-                                    } else {
 
 
-                                    ?>
-                                        <a href="#" class="btn btn-primary" onclick="showAlert()">ADD TO CART</a>
-
-                                        <a href="#" class="btn btn-primary" onclick="showAlert()">ADD TO WISHLIST</a>
-                                        <script>
-                                            function showAlert() {
-                                                Swal.fire({
-                                                    title: 'Alert',
-                                                    text: 'Please Sign in first!',
-                                                    icon: 'info',
-                                                    confirmButtonText: 'OK'
-                                                });
-                                            }
-                                        </script>
-
-
-                                    <?php
-
-                                    }
-                                    ?>
-
-
-</div>
+                                    </div>
 
                                 <?php
-                                
+
 
                                 } else {
                                 ?>
