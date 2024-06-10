@@ -207,9 +207,9 @@
                 <h5 class="offset-1">Recently Added products</h5>
                 <div class="swiper mySwiperVertical">
                     <div class="swiper-wrapper"> 
-                        <div class="swiper-slide">Slide 1</div>
-                        <div class="swiper-slide">Slide 2</div>
-                        <div class="swiper-slide">Slide 3</div>
+                        <div class="swiper-slide"> <img src="pics/products/Apple finally revealed what the 'R' in iPhone XR stands for.jpg" alt="Product 2"></div>
+                        <div class="swiper-slide"> <img src="pics/products/Should You Use an XLR or USB Mic for Content Creation_ - FilterGrade.jpg" alt="Product 2"></div>
+                        <div class="swiper-slide"> <img src="pics/products/Smart TV App for e-sports.jpg" alt="Product 2"></div>
                    
                     </div>
                     <div class="swiper-pagination"></div>

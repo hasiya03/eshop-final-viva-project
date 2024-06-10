@@ -394,7 +394,7 @@ function listproduct(){
           icon: 'error',
           confirmButtonText: 'OK'
       });
-      return; // Exit the function if validation fails
+      return;
   }
 
     var f = new FormData();
@@ -450,57 +450,6 @@ function listproduct(){
 
 
 
-function sort(x) {
-
-  var search = document.getElementById("s");
-  var time = "0";
-
-  if (document.getElementById("n").checked) {
-      time = "1";
-  } else if (document.getElementById("o").checked) {
-      time = "2";
-  }
-
-  var qty = "0";
-
-  if (document.getElementById("h").checked) {
-      qty = "1";
-  } else if (document.getElementById("l").checked) {
-      qty = "2";
-  }
-
-  var condition = "0";
-
-  if (document.getElementById("b").checked) {
-      condition = "1";
-  } else if (document.getElementById("u").checked) {
-      condition = "2";
-  }else if (document.getElementById("ob").checked) {
-    condition = "3";
-  }
-
-  var f = new FormData();
-  f.append("s", search.value);
-  f.append("t", time);
-  f.append("q", qty);
-  f.append("c", condition);
-  f.append("page", x);
-
-  var r = new XMLHttpRequest();
-
-  r.onreadystatechange = function () {
-      if (r.status == 200 && r.readyState == 4) {
-          var t = r.responseText;
-
-          document.getElementById("sort").innerHTML = t;
-
-      }
-  }
-
-  r.open("POST", "sortProcess.php", true);
-  r.send(f);
-
-}
 
 function clearSort() {
   window.location.reload();

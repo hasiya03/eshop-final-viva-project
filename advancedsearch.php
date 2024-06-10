@@ -145,24 +145,29 @@ require "connection.php";
                                         </select>
                                     </div>
                                    
-                                        <div class="col-12 col-lg-6 mb-3">
+                                        <div class="col-12 col-lg-5 mb-3">
                                             <input type="text" class="form-control" placeholder="Price From..." id="pf" />
+                                        </div>
+                                        <div class="col-12 col-lg-1 mb-3 d-flex justify-content-center align-items-center">
+                                        <i class="bi bi-arrow-left-right"></i>
+
                                         </div>
                                         
 
-                                        <div class="col-12 col-lg-6 mb-3">
-                                            <input type="text" class="form-control" placeholder="Price To..." id="pt" />
 
+                                        <div class="col-12 col-lg-4 mb-3">
+                                            <input type="text" class="form-control" placeholder="Price To..." id="pt" />
+                                            
                                         </div>
 
                                         
                                   
 
-                                    <div class="col-6   mb-3 d-grid">
-                                        <button class="btn btn-primary" onclick="advancedSearch(0);">Search</button>
+                                    <div class="col-6 col-lg-1  mb-3 d-grid">
+                                        <button class="btn btn-primary" onclick="advancedSearch(0);"><i class="bi bi-search"></i></button>
                                     </div>
-                                    <div class="col-6   mb-3 d-grid">
-                                        <button class="btn btn-danger" onclick="clearSort();">Clear Sort</button>
+                                    <div class="col-6 col-lg-1  mb-3 d-grid">
+                                        <button class="btn btn-danger" onclick="clearSort();"><i class="bi bi-x-octagon"></i></button>
                                     </div>
 
 
