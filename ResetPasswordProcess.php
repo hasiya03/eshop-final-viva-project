@@ -9,7 +9,7 @@ $v_code = $_POST["vc"];
 
 if(empty($email)){
     echo ("Please enter your email address.");
-}else if(empty($new_pw)){
+}else if(empty($new_pw)){ 
     echo ("Please enter a New Password.");
 }else if(strlen($new_pw)<5 || strlen($new_pw)>20){
     echo ("Invalid New Password.");

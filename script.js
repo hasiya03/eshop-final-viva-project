@@ -25,7 +25,7 @@ function signUp() {
       if (t == "success") {
         Swal.fire({
           title: 'Alert',
-          text: t,
+          text: "success",
           icon: 'success',
           confirmButtonText: 'OK'
       });
@@ -88,7 +88,7 @@ function forgotpassword() {
   r.onreadystatechange = function () {
     if (r.readyState == 4 && r.status == 200) {
       var t = r.responseText;
-      if(t == "success") {
+      if(t == "successfully sent verification code") {
         var modal = document.getElementById("forgotPasswordModal");
         ftPasswordModal = new bootstrap.Modal(modal);
         ftPasswordModal.show();

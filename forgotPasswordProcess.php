@@ -21,7 +21,7 @@ if (isset($_GET["e"])) {
 
         Database::iud("UPDATE `customer_details` SET `Verification_code`='" . $code . "' WHERE `Email`='" . $email . "'");
 
-        $mail = new PHPMailer;
+        $mail = new PHPMailer; 
         $mail->IsSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
