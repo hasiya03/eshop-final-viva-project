@@ -26,7 +26,7 @@ try {
     while ($cart_data = $cart_rs->fetch_assoc()) {
         $line_items[] = [
             'price_data' => [
-                'currency' => 'aud',
+                'currency' => 'lkr',
                 'product_data' => [
                     'name' => $cart_data['Name'],
                     
@@ -40,7 +40,7 @@ try {
     // Adding shipping cost as a separate line item
     $line_items[] = [
         'price_data' => [
-            'currency' => 'aud',
+            'currency' => 'lkr',
             'product_data' => [
                 'name' => 'Shipping',
             ],
